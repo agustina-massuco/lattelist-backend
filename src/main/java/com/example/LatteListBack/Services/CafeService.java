@@ -52,7 +52,6 @@ public class CafeService {
 
         System.out.println("✅ Iniciando Geoapify GET. Ha pasado más de 1 semana o es la primera vez.");
 
-        // Lógica de actualización (lo que ya tenías)
         List<Cafe> cafesApi = geoapifyService.obtenerCafesMdp();
         List<Cafe> cafesAGuardar = new ArrayList<>();
 
@@ -123,6 +122,8 @@ public class CafeService {
         if (horario == null || horario.isBlank()) {
             return false;
         }
+
+        try{
         LocalDateTime ahora = LocalDateTime.now(ZoneId.of("America/Argentina/Buenos_Aires"));
         DayOfWeek hoy = ahora.getDayOfWeek();
         LocalTime horaActual = ahora.toLocalTime();
@@ -150,10 +151,17 @@ public class CafeService {
 
             String[] grupos = bloqueDias.split(",");
 
-            String[] horas = rangoHoras.split("-");
+            String[] horas = rangoHoras.replace(",", "").split("-");
             if (horas.length != 2) continue;
-            LocalTime abre = LocalTime.parse(horas[0]);
-            LocalTime cierra = LocalTime.parse(horas[1]);
+
+            String strAbre = horas[0].trim();
+            String strCierra = horas[1].trim();
+
+            if (strCierra.equals("24:00")) strCierra = "23:59";
+            if (strAbre.equals("24:00")) strAbre = "00:00";
+
+            LocalTime abre = LocalTime.parse(strAbre);
+            LocalTime cierra = LocalTime.parse(strCierra);
 
             for (String g : grupos) {
                 g = g.trim();
@@ -189,6 +197,9 @@ public class CafeService {
                     }
                 }
             }
+        }
+        } catch (Exception e) {
+            System.err.println("Error procesando horario del café: " + cafe.getNombre() + " - " + e.getMessage());
         }
         return false;
     }
