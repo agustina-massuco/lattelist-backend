@@ -12,18 +12,18 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
 * Autenticación y autorización mediante **JWT**
 * Gestión de usuarios con estados (Activo, Inactivo, Desactivado, Eliminado)
 * Roles y permisos (**CLIENTE / ADMIN**) con RBAC
-* Sistema de reseñas con interacción (likes/dislikes) y moderación administrativa.
-* Listas personalizadas de cafés con funcionalidad de clonación y privacidad.
+* Sistema de reseñas con likes/dislikes y moderación
+* Listas personalizadas de cafés
 * Encriptación de contraseñas con BCrypt
-* Integración con **Geoapify API** implementando WebClient para su integración
+* Integración con **Geoapify API**
 * Estrategia de **Soft Delete** para usuarios y reseñas
 
 
 ## Stack Técnico
 * **Lenguaje:** Java 17 (LTS).
-* **Framework:** Spring Boot 3.4.12
+* **Framework:** Spring Boot 3.x.
 * **Persistencia:** Spring Data JPA + Hibernate.
-* **Seguridad:** Spring Security 6 + JJWT + BCrypt
+* **Seguridad:** Spring Security 6 + JWT + BCrypt
 * **Base de Datos:** MySQL.
 * **Mensajería:**  JavaMailSender para recuperación de cuentas y notificaciones.
 * **Integraciones:** Geoapify API (Geolocalización y POIs).
@@ -45,7 +45,7 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
 - ELIMINADO (Soft delete)
 
 
-## ⚙️  Configuración y Ejecución
+## Configuración y Ejecución
 
 ### Requisitos
 - Java 17
@@ -59,31 +59,36 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
    CREATE DATABASE lattelist_db;
 
 2.  **Variables de entorno:**
-    Verifique el archivo: src/main/resources/application.properties y ajuste sus credenciales:
+    Verifique el archivo y ajuste sus credenciales
 
-# Database 
+
+#### src/main/resources/application.properties
+
+### Database
     spring.datasource.url=jdbc:mysql://localhost:3306/lattelist_db                     
     spring.datasource.username=TU_USUARIO 
     spring.datasource.password=TU_PASSWORD 
 
-# External APIs 
+### External APIs
     geoapify.api.key=TU_API_KEY 
 
-# Mail Service 
+### Mail Service
+
+```md
    spring.mail.host=smtp.gmail.com 
    spring.mail.port= tu_codigo_port
    spring.mail.username=tu_correo@gmail.com
    spring.mail.password=tu_app_password
+```
 
-
+## Usuario Administrativo Inicial
 
 ```md
-## Usuario Administrativo Inicial
 
 | Rol | Email | Contraseña |
 |---|---|---|
 | Super Admin | admin@lattelist.com | admin123 |
-
+```
 
 ## Endpoints Principales
 
@@ -122,4 +127,6 @@ Proyecto académico – Tecnicatura Universitaria en Programación (UTN).
 **Desarrollado por:**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Agustina_Massuco-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/agustina-massuco/))
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Cecilia_Novelli-0077B5?style=for-the-badge&logo=linkedin)][(https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/cecilia-novelli-93a4bb247/))
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Cecilia_Novelli-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/cecilia-novelli-93a4bb247/))
+
