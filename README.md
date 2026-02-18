@@ -126,7 +126,7 @@ Proyecto académico – Tecnicatura Universitaria en Programación (UTN).
 
 **Desarrollado por:**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Agustina_Massuco-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/agustina-massuco/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Agustina_Massuco-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/agustina-massuco/])
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Cecilia_Novelli-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/cecilia-novelli-93a4bb247/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Cecilia_Novelli-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/cecilia-novelli-93a4bb247/])
 
