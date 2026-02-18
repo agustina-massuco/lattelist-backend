@@ -12,18 +12,18 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
 * Autenticación y autorización mediante **JWT**
 * Gestión de usuarios con estados (Activo, Inactivo, Desactivado, Eliminado)
 * Roles y permisos (**CLIENTE / ADMIN**) con RBAC
-* Sistema de reseñas con likes/dislikes y moderación
-* Listas personalizadas de cafés
+* Sistema de reseñas con interacción (likes/dislikes) y moderación administrativa.
+* Listas personalizadas de cafés con funcionalidad de clonación y privacidad.
 * Encriptación de contraseñas con BCrypt
-* Integración con **Geoapify API**
+* Integración con **Geoapify API** implementando WebClient para su integración
 * Estrategia de **Soft Delete** para usuarios y reseñas
 
 
 ## Stack Técnico
 * **Lenguaje:** Java 17 (LTS).
-* **Framework:** Spring Boot 3.x.
+* **Framework:** Spring Boot 3.4.12
 * **Persistencia:** Spring Data JPA + Hibernate.
-* **Seguridad:** Spring Security 6 + JWT + BCrypt
+* **Seguridad:** Spring Security 6 + JJWT + BCrypt
 * **Base de Datos:** MySQL.
 * **Mensajería:**  JavaMailSender para recuperación de cuentas y notificaciones.
 * **Integraciones:** Geoapify API (Geolocalización y POIs).
@@ -118,6 +118,8 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
 
 ##  Licencia
 Proyecto académico – Tecnicatura Universitaria en Programación (UTN).
-     
 
+**Desarrollado por:**
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Agustina_Massuco-0077B5?style=for-the-badge&logo=linkedin)]([https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/agustina-massuco/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Cecilia_Novelli-0077B5?style=for-the-badge&logo=linkedin)][(https://www.linkedin.com/in/tu-perfil](https://www.linkedin.com/in/cecilia-novelli-93a4bb247/))
