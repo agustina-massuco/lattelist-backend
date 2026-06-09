@@ -12,6 +12,7 @@ import com.example.LatteListBack.Repositorys.UserRepository;
 import com.example.LatteListBack.Config.JwtService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,8 +21,6 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.example.LatteListBack.Config.DataInitializer.SUPER_ADMIN_EMAIL;
 
 @Service
 public class UserService {
@@ -32,6 +31,8 @@ public class UserService {
     private final EmailService emailService;
     private final ListaDeCafesService listaService;
     private final ReviewService reviewService;
+    @Value("${admin.email:admin@lattelist.com}")
+    private String superAdminEmail;
 
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, EmailService emailService, @Lazy ListaDeCafesService listaService, @Lazy ReviewService reviewService) {
@@ -174,7 +175,7 @@ public class UserService {
         if (u.getEstado() == nuevoEstado) return;
         EstadoUsuario estadoAnterior = u.getEstado();
 
-        if (u.getEmail().equals(SUPER_ADMIN_EMAIL)) {
+        if (u.getEmail().equals(superAdminEmail)) {
             throw new IllegalArgumentException("OPERACIÓN PROHIBIDA: No se puede modificar el estado del Super Admin.");
         }
 

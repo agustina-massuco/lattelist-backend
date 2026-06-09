@@ -5,6 +5,7 @@ import com.example.LatteListBack.Enums.TipoDeUsuario;
 import com.example.LatteListBack.Models.Usuario;
 import com.example.LatteListBack.Repositorys.UserRepository;
 import com.example.LatteListBack.Services.CafeService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,8 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CafeService cafeService;
-    public static final String SUPER_ADMIN_EMAIL = "admin@lattelist.com";
+    @Value("${admin.email:admin@lattelist.com}")
+    private String superAdminEmail;
 
 
     public DataInitializer(UserRepository userRepository, PasswordEncoder passwordEncoder, CafeService cafeService) {
@@ -31,13 +33,13 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void inicializarAdmin() {
-        if (userRepository.findByEmail(SUPER_ADMIN_EMAIL).isEmpty()) {
+        if (userRepository.findByEmail(superAdminEmail).isEmpty()) {
             System.out.println("--- Creando super admin ---");
             Usuario admin = new Usuario();
             admin.setNombre("Super");
             admin.setApellido("Admin");
-            admin.setEmail(SUPER_ADMIN_EMAIL);
-            admin.setPassword(passwordEncoder.encode("admin123"));
+            admin.setEmail(superAdminEmail);
+            admin.setPassword(passwordEncoder.encode(System.getenv("ADMIN_PASSWORD")));
             admin.setTipoDeUsuario(TipoDeUsuario.ADMIN);
             admin.setEstado(EstadoUsuario.ACTIVO);
             userRepository.save(admin);
