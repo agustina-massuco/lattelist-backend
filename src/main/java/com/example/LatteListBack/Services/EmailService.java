@@ -1,6 +1,7 @@
 package com.example.LatteListBack.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -11,6 +12,9 @@ public class EmailService {
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Value("${frontend.url}")
+    private String frontendUrl;
 
     @Async
     public void enviarCorreoBienvenida(String destinatario, String nombre) {
@@ -23,7 +27,7 @@ public class EmailService {
 
     @Async
     public void enviarCorreoRecuperacion(String destinatario, String token) {
-        String link = "http://localhost:4200/auth/reset-password?token=" + token;
+        String link = frontendUrl + "/auth/reset-password?token=" + token;
         enviarMail(destinatario, "Recuperación de Contraseña - LatteList",
                 "Haz clic aquí para restablecer tu contraseña:\n" + link + "\n\nEl enlace expira en 15 minutos.");
     }
