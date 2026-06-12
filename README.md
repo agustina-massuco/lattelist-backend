@@ -87,7 +87,7 @@ Esta es la API REST de **LatteList**, encargada de la lógica de negocio, persis
 
 | Rol | Email | Contraseña |
 |---|---|---|
-| Super Admin | admin@lattelist.com | admin123 |
+| Super Admin | admin@lattelist.com | Configurada por variable de entorno ADMIN_PASSWORD |
 ```
 
 ## Endpoints Principales

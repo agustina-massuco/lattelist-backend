@@ -39,7 +39,7 @@ public class CafeService {
 
     @Transactional
     public List<Cafe> actualizarCafesDesdeApi() {
-
+        statusRepo.deleteAll();
         AppStatus status = statusRepo.findById("SYNC_STATUS").orElse(new AppStatus());
         LocalDateTime ultimaSync = status.getLastGeoapifySync();
 

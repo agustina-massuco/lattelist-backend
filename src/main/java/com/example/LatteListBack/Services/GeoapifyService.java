@@ -63,6 +63,7 @@ public class GeoapifyService {
         }
 
         return response.getFeatures().stream()
+                .filter(f -> f.getProperties() != null && f.getProperties().getName() != null && !f.getProperties().getName().isBlank())
                 .map(mapper::mapFeatureToCafe)
                 .collect(Collectors.toList());
 
