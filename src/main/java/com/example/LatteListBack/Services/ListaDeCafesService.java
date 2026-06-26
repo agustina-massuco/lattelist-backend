@@ -28,6 +28,7 @@ public class ListaDeCafesService {
         this.userService = userService;
     }
 
+    @Transactional
     public List<ListResumenDTO> obtenerMisListas() {
         Usuario usuario = userService.getUsuarioAutenticado();
         List<ListaDeCafes> listas = listaRepository.findByUsuario_Email(usuario.getUsername());
