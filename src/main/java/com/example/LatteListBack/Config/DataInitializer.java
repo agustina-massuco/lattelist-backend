@@ -16,9 +16,12 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CafeService cafeService;
+
     @Value("${admin.email:admin@lattelist.com}")
     private String superAdminEmail;
 
+    @Value("${admin.password:admin123}")
+    private String superAdminPassword;
 
     public DataInitializer(UserRepository userRepository, PasswordEncoder passwordEncoder, CafeService cafeService) {
         this.userRepository = userRepository;
@@ -39,7 +42,7 @@ public class DataInitializer implements CommandLineRunner {
             admin.setNombre("Super");
             admin.setApellido("Admin");
             admin.setEmail(superAdminEmail);
-            admin.setPassword(passwordEncoder.encode(System.getenv("ADMIN_PASSWORD")));
+            admin.setPassword(passwordEncoder.encode(superAdminPassword));
             admin.setTipoDeUsuario(TipoDeUsuario.ADMIN);
             admin.setEstado(EstadoUsuario.ACTIVO);
             userRepository.save(admin);
